@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import Loading from 'common/Loading';
 import Modal from 'common/Modal';
 import LoginPage from 'components/LoginPage';
+import { AuthContext } from 'contexts/AuthContext';
 
 const navigation = [
   { name: 'Product', href: '#' },
