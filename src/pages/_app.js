@@ -1,7 +1,7 @@
 import '@styles/tailwind.css';
 import MainLayout from '@layout/MainLayout';
-import { AuthContext } from '../contexts/AuthContext';
-import { useAuth } from 'hooks/useAuth';
+import { AuthContext } from '@contexts/AuthContext';
+import { useAuth } from '@hooks/useAuth';
 
 function MyApp({ Component, pageProps }) {
   const auth = useAuth();
