@@ -1,9 +1,15 @@
 import { useAuth } from '@hooks/useAuth';
-import { useRef } from 'react';
+import { Router, useRouter } from 'next/router';
+import { useRef, useState } from 'react';
 import { FaLock } from 'react-icons/fa';
 
 export default function LoginPage() {
   const { signIn } = useAuth();
+
+  const router = useRouter();
+
+  const [errorLogin, setErrorLogin] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const userEmail = useRef(null);
   const userPassword = useRef(null);
@@ -12,15 +18,27 @@ export default function LoginPage() {
     event.preventDefault();
     const email = userEmail.current?.value;
     const password = userPassword.current?.value;
+    setErrorLogin(null);
+    setLoading(true);
     //Authorized user: john@mail.com / changeme
     signIn(email, password)
       .then(() => {
+        router.push('/dashboard');
         console.log('Login Success!');
       })
       .catch((error) => {
         console.log(error);
+        if (error.response?.status == 401) {
+          setErrorLogin('Incorrect credentials.');
+        } else if (error.request) {
+          setErrorLogin('Tenemos un problema.');
+        } else {
+          setErrorLogin('Algo salió mal.');
+        }
+        setLoading(false);
       });
   };
+
   return (
     <>
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -84,11 +102,25 @@ export default function LoginPage() {
                 type="submit"
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
+                <span className="flex absolute h-4 w-4 top-0 right-0 -mt-1 -mr-1"></span>
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                  <FaLock className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" />
+                  {loading ? (
+                    <>
+                      <svg fill="none" className="w-6 h-6 animate-spin" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <path clipRule="evenodd" d="M15.165 8.53a.5.5 0 01-.404.58A7 7 0 1023 16a.5.5 0 011 0 8 8 0 11-9.416-7.874.5.5 0 01.58.404z" fill="currentColor" fillRule="evenodd" />
+                      </svg>
+                    </>
+                  ) : (
+                    <FaLock className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" />
+                  )}
                 </span>
                 Sign in
               </button>
+              {errorLogin && (
+                <div className="p-3 my-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+                  <span className="font-medium">Error:</span> {errorLogin}
+                </div>
+              )}
             </div>
           </form>
         </div>
