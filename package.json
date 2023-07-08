@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.15",
+    "axios": "^1.4.0",
     "next": "^13.4.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

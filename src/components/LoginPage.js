@@ -1,7 +1,10 @@
+import { useAuth } from '@hooks/useAuth';
 import { useRef } from 'react';
 import { FaLock } from 'react-icons/fa';
 
 export default function LoginPage() {
+  const { signIn } = useAuth();
+
   const userEmail = useRef(null);
   const userPassword = useRef(null);
 
@@ -9,8 +12,14 @@ export default function LoginPage() {
     event.preventDefault();
     const email = userEmail.current?.value;
     const password = userPassword.current?.value;
-
-    console.log(`User: ${email}, Password: ${password}`);
+    //Authorized user: john@mail.com / changeme
+    signIn(email, password)
+      .then(() => {
+        console.log('Login Success!');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <>
