@@ -32,7 +32,6 @@ export default function LoginPage() {
           position: 'top-end',
           showConfirmButton: false,
           timer: 1500,
-          heightAuto: false,
         });
       })
       .catch((error) => {

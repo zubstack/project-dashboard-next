@@ -17,11 +17,16 @@ export const useAuth = () => {
     const { data: access_token } = await axios
       //(apiUrl, data or parameters to send, request settings )
       .post(endpoints.auth.login, { email, password }, options);
+
     if (access_token) {
+      const token = access_token.access_token;
       // Save the token informationn inside the navigator:
-      Cookies.set('token', access_token.access_token, { expires: 5 });
+      Cookies.set('token', token, { expires: 5 });
+      axios.defaults.headers.Authorization = `Bearer ${token}`;
+      const { data: user } = await axios.get(endpoints.auth.profile);
+      setUser(user);
+      console.log(user);
     }
-    console.log(access_token);
   };
   return { user, signIn };
 };
