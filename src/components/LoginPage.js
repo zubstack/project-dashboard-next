@@ -1,7 +1,8 @@
 import { useAuth } from '@hooks/useAuth';
-import { Router, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { useRef, useState } from 'react';
 import { FaLock } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 export default function LoginPage() {
   const { signIn } = useAuth();
@@ -24,7 +25,15 @@ export default function LoginPage() {
     signIn(email, password)
       .then(() => {
         router.push('/dashboard');
-        console.log('Login Success!');
+        Swal.fire({
+          toast: true,
+          title: 'Welcome',
+          icon: 'success',
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1500,
+          heightAuto: false,
+        });
       })
       .catch((error) => {
         console.log(error);
