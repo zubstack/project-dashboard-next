@@ -9,6 +9,7 @@
       "@layout/*": ["layout/*"],
       "@assets/*": ["assets/*"],
       "@contexts/*": ["contexts/*"],
+      "@services/*": ["services/*"],
       "@hooks/*": ["hooks/*"]
     }
   }

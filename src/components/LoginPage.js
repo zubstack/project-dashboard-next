@@ -6,7 +6,6 @@ import Swal from 'sweetalert2';
 
 export default function LoginPage() {
   const { signIn, user } = useAuth();
-  console.log(user);
 
   const router = useRouter();
 

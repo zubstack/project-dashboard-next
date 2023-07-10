@@ -48,7 +48,6 @@ export const useAuth = () => {
   useEffect(() => {
     fetchUser();
   }, [fetchUser]);
-  console.log(user);
 
   return { user, signIn };
 };
