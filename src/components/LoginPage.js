@@ -5,7 +5,8 @@ import { FaLock } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
 export default function LoginPage() {
-  const { signIn } = useAuth();
+  const { signIn, user } = useAuth();
+  console.log(user);
 
   const router = useRouter();
 
