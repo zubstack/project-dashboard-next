@@ -1,12 +1,17 @@
+import Pagination from '@components/Pagination';
 import { useFetch } from '@hooks/useFetch';
 import { endpoints } from '@services/api';
+import { useState } from 'react';
 
-const PRODUCT_LIMIT = 15;
-const PRODUCT_OFFSET = 5;
+const PRODUCT_LIMIT = 5;
+const PRODUCT_OFFSET = 0;
 export default function Dashboard() {
-  const data = useFetch(endpoints.products.getProducts(PRODUCT_LIMIT, PRODUCT_OFFSET));
+  const [offset, setOffset] = useState(PRODUCT_OFFSET);
+  const data = useFetch(endpoints.products.getProducts(PRODUCT_LIMIT, offset));
+  const totalProducts = useFetch(endpoints.products.getProducts(0, 0));
   const products = data.data;
   console.log(products);
+  console.log(totalProducts.data?.length);
   return (
     <>
       <div className="flex flex-col">
@@ -38,7 +43,7 @@ export default function Dashboard() {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {products?.map((product) => (
-                    <tr key={product.price}>
+                    <tr key={product.id}>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="flex-shrink-0 h-10 w-10">
@@ -73,6 +78,7 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
+        <Pagination products={products} offset={offset} setOffset={setOffset} totalProducts={totalProducts.data?.length}></Pagination>
       </div>
     </>
   );
