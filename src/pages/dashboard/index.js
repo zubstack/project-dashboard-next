@@ -1,6 +1,7 @@
 import Pagination from '@components/Pagination';
 import { useFetch } from '@hooks/useFetch';
 import { endpoints } from '@services/api';
+import { Chart } from '@common/Chart';
 import { useState } from 'react';
 
 const PRODUCT_LIMIT = 5;
@@ -10,10 +11,22 @@ export default function Dashboard() {
   const data = useFetch(endpoints.products.getProducts(PRODUCT_LIMIT, offset));
   const totalProducts = useFetch(endpoints.products.getProducts(0, 0));
   const products = data.data;
-  console.log(products);
-  console.log(totalProducts.data?.length);
+  const categoryNames = products?.map((product) => product.category.name);
+  const countOcurrences = (arr) => arr?.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
+  const chartData = {
+    datasets: [
+      {
+        label: 'Categories',
+        data: countOcurrences(categoryNames),
+        borderWidth: 2,
+        backgroundColor: ['#3F2305', '#DFD7BF', '#F2EAD3', '#606C5D', '#F1C376', '#A8A196'],
+      },
+    ],
+  };
+
   return (
     <>
+      <Chart className="mb-8 mt-2" chartData={chartData} />
       <div className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
