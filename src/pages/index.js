@@ -56,9 +56,6 @@ function Home() {
           />
         </div>
       </div>
-      {/* <Modal open={open} setOpen={setOpen}>
-        <LoginPage />
-      </Modal> */}
     </div>
   );
 }

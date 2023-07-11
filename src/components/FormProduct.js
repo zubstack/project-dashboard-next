@@ -1,7 +1,8 @@
 import { addProduct } from '@services/api/products';
 import { useRef } from 'react';
+import Swal from 'sweetalert2';
 
-function FormProduct() {
+function FormProduct({ setOpenModal }) {
   const formRef = useRef(null);
   function checkData(data) {
     let pass = true;
@@ -42,7 +43,30 @@ function FormProduct() {
 
     const validation = checkData(data);
     if (validation) {
-      addProduct(data);
+      addProduct(data)
+        .then(() => {
+          setOpenModal(false);
+          Swal.fire({
+            toast: true,
+            title: 'Successfuly added',
+            icon: 'success',
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        })
+        .catch((error) => {
+          console.error(`Error: ${error.message}`);
+          //Added .capitalize property to String prototype:
+          Swal.fire({
+            toast: true,
+            title: error.response.data.message[0].capitalize(),
+            icon: 'error',
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3500,
+          });
+        });
     }
   };
   return (
