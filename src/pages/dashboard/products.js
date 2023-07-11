@@ -2,6 +2,7 @@ import { FaEdit, FaPlusCircle, FaTrash } from 'react-icons/fa';
 import Modal from '@common/Modal';
 import { useContext, useState } from 'react';
 import { ProductsContext } from '@contexts/ProductsContext';
+import { FormProduct } from '@components/FormProduct';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -95,7 +96,7 @@ function Products() {
         </div>
       </div>
       <Modal open={open} setOpen={setOpen}>
-        <h1>Hello World</h1>
+        <FormProduct></FormProduct>{' '}
       </Modal>
     </>
   );
