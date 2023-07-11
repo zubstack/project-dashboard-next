@@ -3,13 +3,16 @@ import Modal from '@common/Modal';
 import { useContext, useState } from 'react';
 import { ProductsContext } from '@contexts/ProductsContext';
 import { FormProduct } from '@components/FormProduct';
+import { endpoints } from '@services/api';
+import { useFetch } from '@hooks/useFetch';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 function Products() {
   const [open, setOpen] = useState(false);
-  const { products } = useContext(ProductsContext);
+  const data = useFetch(endpoints.products.allProducts);
+  const products = data.data;
   return (
     <>
       <div className="lg:flex lg:items-center lg:justify-between mb-8">

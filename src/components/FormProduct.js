@@ -1,3 +1,4 @@
+import { addProduct } from '@services/api/products';
 import { useRef } from 'react';
 
 function FormProduct() {
@@ -41,7 +42,7 @@ function FormProduct() {
 
     const validation = checkData(data);
     if (validation) {
-      console.log(data);
+      addProduct(data);
     }
   };
   return (
