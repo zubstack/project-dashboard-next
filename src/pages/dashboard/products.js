@@ -1,12 +1,14 @@
-import { FaPlusCircle } from 'react-icons/fa';
+import { FaEdit, FaPlusCircle, FaTrash } from 'react-icons/fa';
 import Modal from '@common/Modal';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { ProductsContext } from '@contexts/ProductsContext';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 function Products() {
   const [open, setOpen] = useState(false);
+  const { products } = useContext(ProductsContext);
   return (
     <>
       <div className="lg:flex lg:items-center lg:justify-between mb-8">
@@ -55,7 +57,7 @@ function Products() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {/* {products?.map((product) => (
+                  {products?.map((product) => (
                     <tr key={`Product-item-${product.id}`}>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
@@ -76,16 +78,16 @@ function Products() {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{product.id}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <a href="/edit" className="text-indigo-600 hover:text-indigo-900">
-                          Edit
+                          <FaEdit />
                         </a>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <a href="/edit" className="text-indigo-600 hover:text-indigo-900">
-                          Delete
+                          <FaTrash />
                         </a>
                       </td>
                     </tr>
-                  ))} */}
+                  ))}
                 </tbody>
               </table>
             </div>
