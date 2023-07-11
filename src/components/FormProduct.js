@@ -1,6 +1,51 @@
+import { useRef } from 'react';
+
 function FormProduct() {
+  const formRef = useRef(null);
+  function checkData(data) {
+    let pass = true;
+    if (!data.title.match(/\w{5,}/g)) {
+      alert('Title must be at least 5 characters');
+      pass = false;
+      return;
+    }
+    if (!data.price.toString().match(/^[0-9]+$/g)) {
+      alert('Invalid price');
+      pass = false;
+      return;
+    }
+    if (!data.description.match(/\w{5,}/g)) {
+      alert('Description must be at least 5 characters');
+      pass = false;
+      return;
+    }
+    if (!data.images[0].match(/^.+\.(jpg|jpeg|png)$/g)) {
+      alert('Invalid file extension');
+      pass = false;
+      return;
+    }
+
+    return pass;
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(formRef.current);
+    const data = {
+      title: formData.get('title'),
+      price: parseInt(formData.get('price')),
+      description: formData.get('description'),
+      categoryId: parseInt(formData.get('category')),
+      images: [formData.get('images').name],
+    };
+
+    const validation = checkData(data);
+    if (validation) {
+      console.log(data);
+    }
+  };
   return (
-    <form>
+    <form ref={formRef} onSubmit={handleSubmit}>
       <div className="overflow-hidden">
         <div className="px-4 py-5 bg-white sm:p-6">
           <div className="grid grid-cols-6 gap-6">
