@@ -1,8 +1,10 @@
 import { addProduct, updateProduct } from '@services/api/products';
+import { useRouter } from 'next/router';
 import { useRef } from 'react';
 import Swal from 'sweetalert2';
 
 function FormProduct({ setOpenModal, product }) {
+  const router = useRouter();
   const formRef = useRef(null);
   function checkData(data) {
     let pass = true;
@@ -46,6 +48,7 @@ function FormProduct({ setOpenModal, product }) {
       if (product) {
         updateProduct(data, product.id)
           .then(() => {
+            router.push('/dashboard/products');
             Swal.fire({
               toast: true,
               title: 'Successfuly updated',

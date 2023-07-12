@@ -5,8 +5,8 @@ import { FaBell, FaBars, FaTimes } from 'react-icons/fa';
 import { useAuth } from '@hooks/useAuth';
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Productos', href: '/dashboard/products/', current: false },
+  { name: 'Dashboard', href: '/dashboard', current: true },
+  { name: 'Productos', href: '/dashboard/products', current: false },
   { name: 'Ventas', href: '#', current: false },
 ];
 const userNavigation = [
@@ -28,14 +28,16 @@ export default function Header() {
   };
   return (
     <>
-      <Disclosure as="nav" className="bg-gray-800">
+      <Disclosure as="nav" className="bg-black/95">
         {({ open }) => (
           <>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between h-16">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
-                    <img className="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow" />
+                    <svg fill="#9CEC18" width="35px" height="35px" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10.64 1.127L2.487 9.282a3.842 3.842 0 000 5.436l8.155 8.155a3.842 3.842 0 005.436 0l2.719-2.718-2.719-2.718-2.718 2.718L5.204 12l8.155-8.155 5.437 5.437-5.437 5.436 2.718 2.719L21.514 12a3.842 3.842 0 000-5.437l-5.448-5.436a3.828 3.828 0 00-5.425 0Z" />
+                    </svg>{' '}
                   </div>
                   <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline space-x-4">
@@ -56,7 +58,7 @@ export default function Header() {
                   <div className="ml-4 flex items-center md:ml-6">
                     <button
                       type="button"
-                      className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                      className="bg-black/5 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                     >
                       <span className="sr-only">View notifications</span>
                       <FaBell className="h-6 w-6" aria-hidden="true" />
