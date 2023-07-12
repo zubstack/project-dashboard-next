@@ -2,7 +2,7 @@ import { addProduct } from '@services/api/products';
 import { useRef } from 'react';
 import Swal from 'sweetalert2';
 
-function FormProduct({ setOpenModal }) {
+function FormProduct({ setOpenModal, product }) {
   const formRef = useRef(null);
   function checkData(data) {
     let pass = true;
@@ -43,9 +43,9 @@ function FormProduct({ setOpenModal }) {
 
     const validation = checkData(data);
     if (validation) {
-      addProduct(data)
+      addProduct(data, product?.id)
         .then(() => {
-          setOpenModal(false);
+          // setOpenModal(false);
           Swal.fire({
             toast: true,
             title: 'Successfuly added',
@@ -61,7 +61,7 @@ function FormProduct({ setOpenModal }) {
           // error.response.data.message[0].capitalize()
           Swal.fire({
             toast: true,
-            title: error.response.data.message[0] || error.response.data.message,
+            title: error.message,
             icon: 'error',
             position: 'top-end',
             showConfirmButton: false,
@@ -79,19 +79,32 @@ function FormProduct({ setOpenModal }) {
               <label htmlFor="title" className="block text-sm font-medium text-gray-700">
                 Title
               </label>
-              <input type="text" name="title" id="title" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+              <input
+                defaultValue={product?.title}
+                type="text"
+                name="title"
+                id="title"
+                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+              />
             </div>
             <div className="col-span-6 sm:col-span-3">
               <label htmlFor="price" className="block text-sm font-medium text-gray-700">
                 Price
               </label>
-              <input type="number" name="price" id="price" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+              <input
+                defaultValue={product?.price}
+                type="number"
+                name="price"
+                id="price"
+                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+              />
             </div>
             <div className="col-span-6">
               <label htmlFor="category" className="block text-sm font-medium text-gray-700">
                 Category
               </label>
               <select
+                defaultValue={product?.category}
                 id="category"
                 name="category"
                 autoComplete="category-name"
@@ -110,6 +123,7 @@ function FormProduct({ setOpenModal }) {
                 Description
               </label>
               <textarea
+                defaultValue={product?.description}
                 name="description"
                 id="description"
                 autoComplete="description"
@@ -136,7 +150,7 @@ function FormProduct({ setOpenModal }) {
                         className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                       >
                         <span>Upload a file</span>
-                        <input id="images" name="images" type="file" className="sr-only" />
+                        <input defaultValue={product?.images} id="images" name="images" type="file" className="sr-only" />
                       </label>
                       <p className="pl-1">or drag and drop</p>
                     </div>

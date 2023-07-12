@@ -39,7 +39,6 @@ function Products() {
         console.log(error);
       });
   }
-  console.log(products);
   return (
     <>
       <div className="lg:flex lg:items-center lg:justify-between mb-8">
