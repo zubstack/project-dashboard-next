@@ -1,4 +1,4 @@
-import { addProduct } from '@services/api/products';
+import { addProduct, updateProduct } from '@services/api/products';
 import { useRef } from 'react';
 import Swal from 'sweetalert2';
 
@@ -43,9 +43,34 @@ function FormProduct({ setOpenModal, product }) {
 
     const validation = checkData(data);
     if (validation) {
-      addProduct(data, product?.id)
+      if (product) {
+        updateProduct(data, product.id)
+          .then(() => {
+            Swal.fire({
+              toast: true,
+              title: 'Successfuly updated',
+              icon: 'success',
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          })
+          .catch((error) => {
+            console.error(error);
+            Swal.fire({
+              toast: true,
+              title: error.message,
+              icon: 'error',
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3500,
+            });
+          });
+        return;
+      }
+      addProduct(data)
         .then(() => {
-          // setOpenModal(false);
+          setOpenModal(false);
           Swal.fire({
             toast: true,
             title: 'Successfuly added',
