@@ -25,7 +25,7 @@ function Pagination({ products, offset, setOffset, totalProducts }) {
       <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
         <div>
           <p className="text-sm text-gray-700">
-            Showing <span className="font-medium">{1 + (offset - 5)}</span> to <span className="font-medium">{offset}</span> of <span className="font-medium">{totalProducts}</span> results
+            Showing <span className="font-medium">{1 + offset}</span> to <span className="font-medium">{offset + 5}</span> of <span className="font-medium">{totalProducts}</span> results
           </p>
         </div>
         <div>

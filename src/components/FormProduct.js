@@ -56,11 +56,12 @@ function FormProduct({ setOpenModal }) {
           });
         })
         .catch((error) => {
-          console.error(`Error: ${error.message}`);
+          console.error(error);
           //Added .capitalize property to String prototype:
+          // error.response.data.message[0].capitalize()
           Swal.fire({
             toast: true,
-            title: error.response.data.message[0].capitalize(),
+            title: error.response.data.message[0] || error.response.data.message,
             icon: 'error',
             position: 'top-end',
             showConfirmButton: false,

@@ -12,5 +12,15 @@ async function addProduct(data) {
   const response = await axios.post(endpoints.products.addProducts, data, options);
   return response.data;
 }
+async function deleteProduct(id) {
+  const options = {
+    headers: {
+      Authorization: 'Bearer my-token',
+      'My-Custom-Header': 'foobar',
+    },
+  };
+  const response = await axios.delete(endpoints.products.deleteProduct(id), options);
+  console.log(response.data);
+}
 
-export { addProduct };
+export { addProduct, deleteProduct };

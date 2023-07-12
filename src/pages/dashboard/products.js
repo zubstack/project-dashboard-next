@@ -1,19 +1,45 @@
 import { FaEdit, FaPlusCircle, FaTrash } from 'react-icons/fa';
 import Modal from '@common/Modal';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ProductsContext } from '@contexts/ProductsContext';
 import { FormProduct } from '@components/FormProduct';
 import { endpoints } from '@services/api';
 import { useFetch } from '@hooks/useFetch';
+import { deleteProduct } from '@services/api/products';
+import axios from 'axios';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
+
 function Products() {
   const [openModal, setOpenModal] = useState(false);
+  const [products, setProducts] = useState([]);
 
-  const data = useFetch(endpoints.products.allProducts);
-  const products = data.data;
+  useEffect(() => {
+    async function getProducts() {
+      const response = await axios.get(endpoints.products.allProducts);
+      setProducts(response?.data);
+    }
+    try {
+      getProducts();
+    } catch {
+      console.log(error);
+    }
+  }, [openModal]);
+
+  function handleDelete(id) {
+    deleteProduct(id)
+      .then(() => {
+        console.log('Deleted');
+        const newArray = products.filter((product) => product.id != id);
+        setProducts(newArray);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  console.log(products);
   return (
     <>
       <div className="lg:flex lg:items-center lg:justify-between mb-8">
@@ -82,13 +108,13 @@ function Products() {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{product.id}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a href="/edit" className="text-indigo-600 hover:text-indigo-900">
+                        <a className="text-indigo-600 hover:text-indigo-900">
                           <FaEdit />
                         </a>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a href="/edit" className="text-indigo-600 hover:text-indigo-900">
-                          <FaTrash />
+                        <a className="text-indigo-600 hover:text-indigo-900">
+                          <FaTrash onClick={() => handleDelete(product.id)} />
                         </a>
                       </td>
                     </tr>
