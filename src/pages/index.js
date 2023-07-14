@@ -19,7 +19,7 @@ function Home() {
   return (
     <div className="bg-white">
       {/* <a href="/login" className="text-sm font-semibold leading-6 text-gray-900">
-        Login<span aria-hidden="true">→</span>
+        Login as administrator<span aria-hidden="true">→</span>
       </a> */}
       <Logo></Logo>
       <div className="relative isolate px-6 pt-40 lg:px-8">
