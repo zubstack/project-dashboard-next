@@ -10,9 +10,7 @@ function MyApp({ Component, pageProps }) {
     <AuthContext.Provider value={auth}>
       <ProductsProvider>
         {' '}
-        <MainLayout>
-          <Component {...pageProps} />
-        </MainLayout>
+        <Component {...pageProps} />
       </ProductsProvider>
     </AuthContext.Provider>
   );

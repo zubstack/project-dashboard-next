@@ -4,6 +4,7 @@ import { endpoints } from '@services/api';
 import { Chart } from '@common/Chart';
 import { useContext, useState } from 'react';
 import { ProductsContext } from '@contexts/ProductsContext';
+import Header from '@components/Header';
 
 export default function Dashboard() {
   const { products, totalProducts, offset, setOffset } = useContext(ProductsContext);
@@ -23,6 +24,7 @@ export default function Dashboard() {
 
   return (
     <>
+      <Header />
       <Chart className="mb-8 mt-2" chartData={chartData} />
       <div className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
