@@ -6,7 +6,9 @@ import { ProductsProvider } from '@contexts/ProductsContext';
 
 function MyApp({ Component, pageProps }) {
   const auth = useAuth();
-  return (
+  const getLayout = Component.getLayout || ((page) => page);
+
+  return getLayout(
     <AuthContext.Provider value={auth}>
       <ProductsProvider>
         {' '}

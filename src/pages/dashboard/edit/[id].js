@@ -1,5 +1,6 @@
 import Modal from '@common/Modal';
 import { FormProduct } from '@components/FormProduct';
+import AdminLayout from '@layout/AdminLayout';
 import { endpoints } from '@services/api';
 import axios from 'axios';
 import { useRouter } from 'next/router';
@@ -27,5 +28,7 @@ function Edit() {
 
   return <FormProduct product={product}></FormProduct>;
 }
+
+Edit.getLayout = (page) => <AdminLayout>{page}</AdminLayout>;
 
 export default Edit;

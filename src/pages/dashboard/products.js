@@ -7,6 +7,7 @@ import { endpoints } from '@services/api';
 import { useFetch } from '@hooks/useFetch';
 import { deleteProduct } from '@services/api/products';
 import axios from 'axios';
+import AdminLayout from '@layout/AdminLayout';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -41,21 +42,16 @@ function Products() {
   }
   return (
     <>
-      <div className="lg:flex lg:items-center lg:justify-between mb-8">
-        <div className="flex-1 min-w-0">
-          <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">List of Products</h2>
-        </div>
+      <div className="lg:flex sm:justify-end p-4 ">
         <div className="mt-5 flex lg:mt-0 lg:ml-4">
-          <span className="sm:ml-3">
-            <button
-              type="button"
-              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              onClick={() => setOpenModal(true)}
-            >
-              <FaPlusCircle className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
-              Add Product
-            </button>
-          </span>
+          <button
+            type="button"
+            className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-cafe-600 hover:bg-cafe-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cafe-500"
+            onClick={() => setOpenModal(true)}
+          >
+            <FaPlusCircle className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
+            Add Product
+          </button>
         </div>
       </div>
 
@@ -103,16 +99,16 @@ function Products() {
                         <div className="text-sm text-gray-900">{product.category.name}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">${product.price}</span>
+                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-black/80">${product.price}</span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{product.id}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a href={`../dashboard/edit/${product.id}`} className="text-indigo-600 hover:text-indigo-900">
+                        <a href={`../dashboard/edit/${product.id}`} className="text-cafe-600 hover:text-cafe-900">
                           <FaEdit />
                         </a>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a className="text-indigo-600 hover:text-indigo-900">
+                        <a className="text-cafe-600 hover:text-cafe-900">
                           <FaTrash onClick={() => handleDelete(product.id)} />
                         </a>
                       </td>
@@ -130,4 +126,7 @@ function Products() {
     </>
   );
 }
+
+Products.getLayout = (page) => <AdminLayout>{page}</AdminLayout>;
+
 export default Products;

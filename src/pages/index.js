@@ -7,6 +7,8 @@ import LoginPage from 'components/LoginPage';
 import { AuthContext } from 'contexts/AuthContext';
 import Link from 'next/link';
 import Logo from '../../public/logo-icon';
+import Dashboard from './dashboard';
+import AdminLayout from '@layout/AdminLayout';
 
 const navigation = [
   { name: 'Product', href: '#' },
@@ -60,4 +62,5 @@ function Home() {
   );
 }
 
+Dashboard.getLayout = (page) => <AdminLayout>{page}</AdminLayout>;
 export default Home;

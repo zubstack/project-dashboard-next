@@ -112,7 +112,7 @@ function FormProduct({ setOpenModal, product }) {
                 type="text"
                 name="title"
                 id="title"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 focus:ring-cafe-500 focus:border-cafe-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
             <div className="col-span-6 sm:col-span-3">
@@ -124,7 +124,7 @@ function FormProduct({ setOpenModal, product }) {
                 type="number"
                 name="price"
                 id="price"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 focus:ring-cafe-500 focus:border-cafe-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
             <div className="col-span-6">
@@ -136,7 +136,7 @@ function FormProduct({ setOpenModal, product }) {
                 id="category"
                 name="category"
                 autoComplete="category-name"
-                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-cafe-500 focus:border-cafe-500 sm:text-sm"
               >
                 <option value="1">Clothes</option>
                 <option value="2">Electronics</option>
@@ -156,7 +156,7 @@ function FormProduct({ setOpenModal, product }) {
                 id="description"
                 autoComplete="description"
                 rows="3"
-                className="form-textarea mt-1 block w-full mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="form-textarea mt-1 block w-full mt-1 focus:ring-cafe-500 focus:border-cafe-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
             <div className="col-span-6">
@@ -175,7 +175,7 @@ function FormProduct({ setOpenModal, product }) {
                     <div className="flex text-sm text-gray-600">
                       <label
                         htmlFor="images"
-                        className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                        className="relative cursor-pointer bg-white rounded-md font-medium text-cafe-600 hover:text-cafe-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-cafe-500"
                       >
                         <span>Upload a file</span>
                         <input defaultValue={product?.images} id="images" name="images" type="file" className="sr-only" />
@@ -192,7 +192,7 @@ function FormProduct({ setOpenModal, product }) {
         <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
           <button
             type="submit"
-            className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cafe-600 hover:bg-cafe-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cafe-500"
           >
             Save
           </button>
