@@ -28,7 +28,7 @@ function Products() {
       console.log(error);
     }
   }, [openModal]);
-
+  console.log('products', products);
   function handleDelete(id) {
     deleteProduct(id)
       .then(() => {
