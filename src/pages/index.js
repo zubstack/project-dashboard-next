@@ -7,7 +7,7 @@ import LoginPage from 'components/LoginPage';
 import { AuthContext } from 'contexts/AuthContext';
 import Link from 'next/link';
 import Logo from '../../public/logo-icon';
-import Dashboard from './dashboard/dashboard';
+import Dashboard from './dashboard/index';
 import AdminLayout from '@layout/AdminLayout';
 
 const navigation = [
