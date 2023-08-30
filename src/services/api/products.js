@@ -32,7 +32,6 @@ async function updateProduct(data, id) {
     },
   };
   const response = await axios.put(endpoints.products.updateProduct(id), data, options);
-  console.log('PUT');
 
   return response.data;
 }

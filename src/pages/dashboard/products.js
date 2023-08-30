@@ -29,6 +29,7 @@ function Products() {
     }
   }, [openModal]);
   function handleDelete(id) {
+    console.log(id);
     deleteProduct(id)
       .then(() => {
         console.log('Deleted');

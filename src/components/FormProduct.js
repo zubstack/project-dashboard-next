@@ -177,7 +177,7 @@ function FormProduct({ setOpenModal, product }) {
                 URL image
               </label>
               <input
-                defaultValue={product?.image}
+                defaultValue={product.images !== undefined ? product.images[0] : ''}
                 name="image"
                 id="image"
                 autoComplete="image"
