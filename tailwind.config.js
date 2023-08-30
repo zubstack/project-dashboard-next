@@ -8,16 +8,16 @@ module.exports = {
     extend: {
       color: {
         ...colors,
-        darkblue: '#010221',
+        whity: '#010221',
       },
       colors: {
-        darkblue: {
-          500: '##103778',
-          600: '#010221',
+        whity: {
+          500: '#FFFFFF',
+          600: '#FFFFFF',
         },
-        galleta: {
-          500: '#f2ead3',
-          600: '#dfd7bf',
+        blacky: {
+          500: '#000000',
+          600: '#000000',
         },
       },
     },
