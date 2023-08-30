@@ -1,4 +1,6 @@
+import Button from '@common/Button';
 import Modal from '@common/Modal';
+import Nav from '@common/Nav';
 import { FormProduct } from '@components/FormProduct';
 import AdminLayout from '@layout/AdminLayout';
 import { endpoints } from '@services/api';
@@ -26,7 +28,15 @@ function Edit() {
   }, [router?.isReady]);
   console.log(product);
 
-  return <FormProduct product={product}></FormProduct>;
+  return (
+    <>
+      <Button color={'grey'} onClick={router.back}>
+        {'< Back'}
+      </Button>
+      <Nav page={'Edit'} />
+      <FormProduct product={product}></FormProduct>;
+    </>
+  );
 }
 
 Edit.getLayout = (page) => <AdminLayout>{page}</AdminLayout>;

@@ -62,10 +62,10 @@ function AdminLayout({ children }) {
         className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full  border-r border-gray-200 sm:translate-x-0 bg-galleta-500 bg-blacky-500 text-whity-500"
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 pb-4 overflow-y-auto bg-galleta-500">
-          <ul className="space-y-2 font-medium  bg-galleta-500 ">
-            <li>
-              <Link href={'/dashboard'} className="flex items-center p-2 text-darkblue-500 rounded-lg hover:text-black dark:hover:bg-galleta-600 group">
+        <div className="h-full  pb-4 overflow-y-auto bg-galleta-500">
+          <ul className="space-y-2 font-medium">
+            <li className=" hover:bg-slate-900">
+              <Link href={'/dashboard'} className="flex items-center p-2 text-darkblue-500 rounded-lg  dark:hover:bg-galleta-600 group">
                 <div className="flex items-center gap-3 ml-3">
                   {' '}
                   <FaList />
@@ -73,8 +73,8 @@ function AdminLayout({ children }) {
                 </div>
               </Link>
             </li>
-            <li>
-              <Link href={'/dashboard/products'} className="flex items-center p-2 text-darkblue-500 rounded-lg hover:text-black dark:hover:bg-galleta-600 group">
+            <li className=" hover:bg-slate-900">
+              <Link href={'/dashboard/products'} className="flex items-center p-2 text-darkblue-500 rounded-lg group">
                 <div className="flex items-center gap-3 ml-3">
                   {' '}
                   <FaTags />
@@ -86,7 +86,7 @@ function AdminLayout({ children }) {
         </div>
       </aside>
 
-      <div className="mt-30 p-20 sm:ml-64">{children}</div>
+      <div className="mt-[40px] p-10 sm:ml-64 bg-slate-200">{children}</div>
     </>
   );
 }
