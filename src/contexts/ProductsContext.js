@@ -1,16 +1,40 @@
 import { useFetch } from '@hooks/useFetch';
 import { endpoints } from '@services/api';
-import { createContext, useState } from 'react';
+import axios from 'axios';
+import { createContext, useEffect, useState } from 'react';
 
 const ProductsContext = createContext();
 
 const ProductsProvider = ({ children }) => {
-  const data = useFetch(endpoints.products.getProducts());
-  const [loading, setLoading] = useState(0);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const products = data.data;
+  async function getProducts() {
+    setLoading(true);
 
-  return <ProductsContext.Provider value={{ products }}>{children}</ProductsContext.Provider>;
+    try {
+      const response = await axios.get(endpoints.products.allProducts);
+      setProducts(response?.data);
+    } catch {
+      console.log('Error fetching data:', error);
+    }
+    setLoading(false);
+  }
+
+  async function updateProducts() {
+    console.log(['UPDATING PRODUCTS']);
+    setLoading(true);
+    try {
+      const response = await axios.get(endpoints.products.allProducts);
+      setProducts(response?.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+    setLoading(false);
+  }
+
+  console.log('loading', loading);
+  return <ProductsContext.Provider value={{ products, setProducts, loading, setLoading, getProducts, updateProducts }}>{children}</ProductsContext.Provider>;
 };
 
 export { ProductsContext, ProductsProvider };

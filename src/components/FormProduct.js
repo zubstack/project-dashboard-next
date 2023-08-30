@@ -1,9 +1,12 @@
+import { ProductsContext } from '@contexts/ProductsContext';
 import { addProduct, updateProduct } from '@services/api/products';
 import { useRouter } from 'next/router';
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import Swal from 'sweetalert2';
 
 function FormProduct({ setOpenModal, product }) {
+  console.log('product', product);
+  const { updateProducts } = useContext(ProductsContext);
   const router = useRouter();
   const formRef = useRef(null);
   function checkData(data) {
@@ -50,6 +53,7 @@ function FormProduct({ setOpenModal, product }) {
       if (product) {
         updateProduct(data, product.id)
           .then(() => {
+            updateProducts();
             router.push('/dashboard/products');
             Swal.fire({
               toast: true,
@@ -75,6 +79,7 @@ function FormProduct({ setOpenModal, product }) {
       }
       addProduct(data)
         .then(() => {
+          updateProducts();
           setOpenModal(false);
           Swal.fire({
             toast: true,
@@ -177,7 +182,7 @@ function FormProduct({ setOpenModal, product }) {
                 URL image
               </label>
               <input
-                defaultValue={product.images !== undefined ? product.images[0] : ''}
+                defaultValue={product?.images !== undefined ? product.images[0] : ''}
                 name="image"
                 id="image"
                 autoComplete="image"
