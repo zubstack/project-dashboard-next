@@ -69,7 +69,7 @@ export default function LoginPage() {
                   type="email"
                   autoComplete="email"
                   required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-darkblue-500 focus:border-darkblue-500 focus:z-10 sm:text-sm"
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-whity-500 focus:border-whity-500 focus:z-10 sm:text-sm"
                   placeholder="Email address"
                   ref={userEmail}
                 />
@@ -84,7 +84,7 @@ export default function LoginPage() {
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-darkblue-500 focus:border-darkblue-500 focus:z-10 sm:text-sm"
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-whity-500 focus:border-whity-500 focus:z-10 sm:text-sm"
                   placeholder="Password"
                   ref={userPassword}
                 />
@@ -93,14 +93,14 @@ export default function LoginPage() {
 
             <div className="flex items-center justify-between">
               <div className="flex items-center">
-                <input id="remember-me" name="remember-me" type="checkbox" className="h-4 w-4 text-darkblue-600 focus:ring-darkblue-500 border-gray-300 rounded" />
+                <input id="remember-me" name="remember-me" type="checkbox" className="h-4 w-4 text-whity-600 focus:ring-whity-500 border-gray-300 rounded" />
                 <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
                   Remember me
                 </label>
               </div>
 
               <div className="text-sm">
-                <a href="#" className="font-medium text-darkblue-600 hover:text-darkblue-500">
+                <a href="#" className="font-medium text-whity-600 hover:text-whity-500">
                   Forgot your password?
                 </a>
               </div>
@@ -109,7 +109,7 @@ export default function LoginPage() {
             <div>
               <button
                 type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-darkblue-600 hover:bg-darkblue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-darkblue-500"
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-whity-600 hover:bg-whity-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-whity-500"
               >
                 <span className="flex absolute h-4 w-4 top-0 right-0 -mt-1 -mr-1"></span>
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">
@@ -120,7 +120,7 @@ export default function LoginPage() {
                       </svg>
                     </>
                   ) : (
-                    <FaLock className="h-5 w-5 text-darkblue-500 group-hover:text-darkblue-400" aria-hidden="true" />
+                    <FaLock className="h-5 w-5 text-whity-500 group-hover:text-whity-400" aria-hidden="true" />
                   )}
                 </span>
                 Sign in

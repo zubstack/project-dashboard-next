@@ -16,10 +16,10 @@ function AdminLayout({ children }) {
   }
   return (
     <>
-      <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+      <nav className="fixed top-0 z-50 w-full bg-gray-700  border-gray-200">
         <div className="px-3 py-3 lg:px-5 lg:pl-3">
           <div className="flex items-center justify-between">
-            <div className="flex items-center justify-start">
+            <div className="flex items-center justify-start text-whity-500">
               <Logo />
             </div>
             <div className="flex flex-end">
@@ -59,13 +59,13 @@ function AdminLayout({ children }) {
 
       <aside
         id="logo-sidebar"
-        className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full  border-r border-gray-200 sm:translate-x-0 bg-blacky-500 dark:border-gray-700"
+        className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full  border-r border-gray-200 sm:translate-x-0 bg-galleta-500 bg-blacky-500 text-whity-500"
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 pb-4 overflow-y-auto bg-blacky-500">
-          <ul className="space-y-2 font-medium  bg-blacky-500 ">
+        <div className="h-full px-3 pb-4 overflow-y-auto bg-galleta-500">
+          <ul className="space-y-2 font-medium  bg-galleta-500 ">
             <li>
-              <Link href={'/dashboard'} className="flex items-center p-2 text-whity-500 rounded-lg hover:text-black dark:hover:bg-blacky-600 group">
+              <Link href={'/dashboard'} className="flex items-center p-2 text-darkblue-500 rounded-lg hover:text-black dark:hover:bg-galleta-600 group">
                 <div className="flex items-center gap-3 ml-3">
                   {' '}
                   <FaList />
@@ -74,7 +74,7 @@ function AdminLayout({ children }) {
               </Link>
             </li>
             <li>
-              <Link href={'/dashboard/products'} className="flex items-center p-2 text-whity-500 rounded-lg hover:text-black dark:hover:bg-blacky-600 group">
+              <Link href={'/dashboard/products'} className="flex items-center p-2 text-darkblue-500 rounded-lg hover:text-black dark:hover:bg-galleta-600 group">
                 <div className="flex items-center gap-3 ml-3">
                   {' '}
                   <FaTags />

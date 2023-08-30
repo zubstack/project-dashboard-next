@@ -10,6 +10,8 @@ import axios from 'axios';
 import AdminLayout from '@layout/AdminLayout';
 import Nav from '@common/Nav';
 import Loading from '@common/Loading';
+import Button from '@common/Button/';
+import { useRouter } from 'next/router';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -18,7 +20,7 @@ function classNames(...classes) {
 function Products() {
   const { products, getProducts, loading, updateProducts } = useContext(ProductsContext);
   const [openModal, setOpenModal] = useState(false);
-
+  const router = useRouter();
   useEffect(() => {
     getProducts();
   }, []);
@@ -40,14 +42,10 @@ function Products() {
 
       <div className="lg:flex sm:justify-end p-4 ">
         <div className="mt-5 flex lg:mt-0 lg:ml-4">
-          <button
-            type="button"
-            className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-darkblue-600 hover:bg-darkblue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-darkblue-500"
-            onClick={() => setOpenModal(true)}
-          >
+          <Button color={'grey'} onClick={() => setOpenModal(true)}>
             <FaPlusCircle className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
             Add Product
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -98,18 +96,18 @@ function Products() {
                           <div className="text-sm text-gray-900">{product.brand}</div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-black/80">${product.price}</span>
+                          <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-/80">${product.price}</span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{product.weight}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                          <a href={`../dashboard/edit/${product.id}`} className="text-darkblue-600 hover:text-darkblue-900">
-                            <FaEdit />
-                          </a>
+                          <Button color={'grey'} onClick={() => router.push(`../dashboard/edit/${product.id}`)}>
+                            Edit
+                          </Button>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                          <a className="text-darkblue-600 hover:text-darkblue-900">
-                            <FaTrash onClick={() => handleDelete(product.id)} />
-                          </a>
+                          <Button color={'red'} onClick={() => handleDelete(product.id)}>
+                            Delete
+                          </Button>
                         </td>
                       </tr>
                     ))}

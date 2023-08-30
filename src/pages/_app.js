@@ -1,4 +1,5 @@
 import '@styles/tailwind.css';
+import '@styles/global.css';
 import MainLayout from '@layout/MainLayout';
 import { AuthContext } from '@contexts/AuthContext';
 import { useAuth } from '@hooks/useAuth';
