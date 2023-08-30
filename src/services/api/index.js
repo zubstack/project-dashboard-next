@@ -1,7 +1,7 @@
 // const API = process.env.NEXT_PUBLIC_API_URL;
 // const VERSION = process.env.NEXT_PUBLIC_API_VERSION;
 
-const API = 'http://localhost:3000';
+const API = 'https://ecommerce-api-8vjd.onrender.com/api';
 
 const endpoints = {
   // auth: {
@@ -11,6 +11,7 @@ const endpoints = {
   products: {
     getProducts: () => `${API}/products`,
     allProducts: `${API}/products`,
+    addProducts: `${API}/products`,
 
     // getProducts: (limit, offfset) => `${API}/api/${VERSION}/products?limit=${limit}&offset=${offfset}`,
     // getProduct: (id) => `${API}/api/${VERSION}/products/${id}`,

@@ -10,6 +10,7 @@ async function addProduct(data) {
     },
   };
   const response = await axios.post(endpoints.products.addProducts, data, options);
+  console.log('data', data);
   return response.data;
 }
 async function deleteProduct(id) {
