@@ -8,6 +8,7 @@ import { useFetch } from '@hooks/useFetch';
 import { deleteProduct } from '@services/api/products';
 import axios from 'axios';
 import AdminLayout from '@layout/AdminLayout';
+import Nav from '@common/Nav';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -42,11 +43,13 @@ function Products() {
   }
   return (
     <>
+      <Nav page={'Products'} />
+
       <div className="lg:flex sm:justify-end p-4 ">
         <div className="mt-5 flex lg:mt-0 lg:ml-4">
           <button
             type="button"
-            className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-cafe-600 hover:bg-cafe-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cafe-500"
+            className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-darkblue-600 hover:bg-darkblue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-darkblue-500"
             onClick={() => setOpenModal(true)}
           >
             <FaPlusCircle className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
@@ -103,12 +106,12 @@ function Products() {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{product.weight}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a href={`../dashboard/edit/${product.id}`} className="text-cafe-600 hover:text-cafe-900">
+                        <a href={`../dashboard/edit/${product.id}`} className="text-darkblue-600 hover:text-darkblue-900">
                           <FaEdit />
                         </a>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a className="text-cafe-600 hover:text-cafe-900">
+                        <a className="text-darkblue-600 hover:text-darkblue-900">
                           <FaTrash onClick={() => handleDelete(product.id)} />
                         </a>
                       </td>

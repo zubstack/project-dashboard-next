@@ -25,6 +25,8 @@ export default function Dashboard() {
 
   return (
     <>
+      <Nav page={'Dashboard'} />
+
       <Chart className="mb-8 mt-2" chartData={chartData} />
       <div className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -67,7 +69,7 @@ export default function Dashboard() {
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{product.category.name}</div>
+                        <div className="text-sm text-gray-900">{product.categories}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">$ {product.price}</span>

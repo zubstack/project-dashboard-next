@@ -8,12 +8,12 @@ module.exports = {
     extend: {
       color: {
         ...colors,
-        cafe: '#884a39',
+        darkblue: '#010221',
       },
       colors: {
-        cafe: {
-          500: '#884a39',
-          600: '#862b0d',
+        darkblue: {
+          500: '##103778',
+          600: '#010221',
         },
         galleta: {
           500: '#f2ead3',

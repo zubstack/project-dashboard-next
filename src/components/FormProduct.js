@@ -112,7 +112,7 @@ function FormProduct({ setOpenModal, product }) {
                 type="text"
                 name="name"
                 id="name"
-                className="mt-1 focus:ring-cafe-500 focus:border-cafe-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 focus:ring-darkblue-500 focus:border-darkblue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
             <div className="col-span-6 sm:col-span-3">
@@ -124,7 +124,7 @@ function FormProduct({ setOpenModal, product }) {
                 type="number"
                 name="price"
                 id="price"
-                className="mt-1 focus:ring-cafe-500 focus:border-cafe-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 focus:ring-darkblue-500 focus:border-darkblue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
             <div className="col-span-6">
@@ -136,13 +136,13 @@ function FormProduct({ setOpenModal, product }) {
                 id="category"
                 name="category"
                 autoComplete="category-name"
-                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-cafe-500 focus:border-cafe-500 sm:text-sm"
+                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-darkblue-500 focus:border-darkblue-500 sm:text-sm"
               >
-                <option value="1">Speakers</option>
-                <option value="2">Smarthpones</option>
-                <option value="3">Cables</option>
-                <option value="4">Tablets</option>
-                <option value="5">Computers</option>
+                <option value="Speakers">Speakers</option>
+                <option value="Smarthpones">Smarthpones</option>
+                <option value="Cables">Cables</option>
+                <option value="Tablets">Tablets</option>
+                <option value="Computers">Computers</option>
               </select>
             </div>
 
@@ -156,7 +156,7 @@ function FormProduct({ setOpenModal, product }) {
                 id="brand"
                 autoComplete="brand"
                 rows="3"
-                className="form-textarea mt-1 block w-full mt-1 focus:ring-cafe-500 focus:border-cafe-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="form-textarea mt-1 block w-full mt-1 focus:ring-darkblue-500 focus:border-darkblue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
             <div className="col-span-6">
@@ -169,7 +169,7 @@ function FormProduct({ setOpenModal, product }) {
                 id="weight"
                 autoComplete="weight"
                 rows="3"
-                className="form-textarea mt-1 block w-full mt-1 focus:ring-cafe-500 focus:border-cafe-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="form-textarea mt-1 block w-full mt-1 focus:ring-darkblue-500 focus:border-darkblue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
             <div className="col-span-6">
@@ -182,7 +182,7 @@ function FormProduct({ setOpenModal, product }) {
                 id="image"
                 autoComplete="image"
                 rows="3"
-                className="form-textarea mt-1 block w-full mt-1 focus:ring-cafe-500 focus:border-cafe-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="form-textarea mt-1 block w-full mt-1 focus:ring-darkblue-500 focus:border-darkblue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
           </div>
@@ -190,7 +190,7 @@ function FormProduct({ setOpenModal, product }) {
         <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
           <button
             type="submit"
-            className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cafe-600 hover:bg-cafe-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cafe-500"
+            className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-darkblue-600 hover:bg-darkblue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-darkblue-500"
           >
             Save
           </button>
