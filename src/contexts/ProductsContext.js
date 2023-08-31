@@ -30,7 +30,6 @@ const ProductsProvider = ({ children }) => {
     }
   }
 
-  console.log('loading', loading);
   return <ProductsContext.Provider value={{ products, setProducts, loading, setLoading, getProducts, updateProducts }}>{children}</ProductsContext.Provider>;
 };
 

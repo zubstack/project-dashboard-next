@@ -4,18 +4,17 @@ import MainLayout from '@layout/MainLayout';
 import { AuthContext } from '@contexts/AuthContext';
 import { useAuth } from '@hooks/useAuth';
 import { ProductsProvider } from '@contexts/ProductsContext';
+import { SessionProvider } from 'next-auth/react';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   const auth = useAuth();
   const getLayout = Component.getLayout || ((page) => page);
-
-  return getLayout(
-    <AuthContext.Provider value={auth}>
-      <ProductsProvider>
-        {' '}
-        <Component {...pageProps} />
-      </ProductsProvider>
-    </AuthContext.Provider>
+  return (
+    <SessionProvider session={session}>
+      {/* <AuthContext.Provider value={auth}> */}
+      <ProductsProvider>{getLayout(<Component {...pageProps} />)}</ProductsProvider>
+      {/* </AuthContext.Provider> */}
+    </SessionProvider>
   );
 }
 

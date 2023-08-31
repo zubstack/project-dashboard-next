@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import Logo from '../../public/logo-icon';
 
 export default function LoginPage() {
-  const { signIn, user } = useAuth();
+  const { signIn } = useAuth();
 
   const router = useRouter();
 
@@ -22,30 +22,29 @@ export default function LoginPage() {
     const password = userPassword.current?.value;
     setErrorLogin(null);
     setLoading(true);
-    //Authorized user: john@mail.com / changeme
-    signIn(email, password)
-      .then(() => {
-        router.push('/dashboard');
-        Swal.fire({
-          toast: true,
-          title: 'Welcome',
-          icon: 'success',
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-        if (error.response?.status == 401) {
-          setErrorLogin('Incorrect credentials.');
-        } else if (error.request) {
-          setErrorLogin('Tenemos un problema.');
-        } else {
-          setErrorLogin('Algo salió mal.');
-        }
-        setLoading(false);
-      });
+    signIn(email, password);
+
+    router.push('/dashboard');
+    Swal.fire({
+      toast: true,
+      title: 'Welcome',
+      icon: 'success',
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1500,
+    });
+
+    // .catch((error) => {
+    //   console.log(error);
+    //   if (error.response?.status == 401) {
+    //     setErrorLogin('Incorrect credentials.');
+    //   } else if (error.request) {
+    //     setErrorLogin('Tenemos un problema.');
+    //   } else {
+    //     setErrorLogin('Algo salió mal.');
+    //   }
+    //   setLoading(false);
+    // });
   };
 
   return (
@@ -109,7 +108,7 @@ export default function LoginPage() {
             <div>
               <button
                 type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-whity-600 hover:bg-whity-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-whity-500"
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-whity-500"
               >
                 <span className="flex absolute h-4 w-4 top-0 right-0 -mt-1 -mr-1"></span>
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">

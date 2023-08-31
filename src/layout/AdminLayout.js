@@ -1,15 +1,19 @@
 import { Menu, Transition } from '@headlessui/react';
 import Logo from '../../public/logo-icon';
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
 import { FaList, FaTags } from 'react-icons/fa';
 import Link from 'next/link';
+import { AuthContext } from '@contexts/AuthContext';
+import { ProductsContext } from '@contexts/ProductsContext';
+import { useSession } from 'next-auth/react';
 
 function AdminLayout({ children }) {
+  const { data: session } = useSession();
+  console.log('session', session);
   const userNavigation = [
     { name: 'Account', to: '/account' },
     { name: 'Settings', to: '/settings' },
-    //PENDING: /logout is not a link
-    { name: 'Sign out', to: '/logout' },
+    { name: 'Sign out', to: '/' },
   ];
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
@@ -27,7 +31,7 @@ function AdminLayout({ children }) {
                 <div>
                   <Menu.Button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                     <span className="sr-only">Open user menu</span>
-                    <img className="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo"></img>{' '}
+                    <img className="w-8 h-8 rounded-full" src={session?.user.image} alt="user photo"></img>{' '}
                   </Menu.Button>
                 </div>
                 <Transition
