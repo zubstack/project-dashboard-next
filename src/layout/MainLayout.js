@@ -5,9 +5,7 @@ import { useRouter } from 'next/router';
 
 export default function MainLayout({ children }) {
   const router = useRouter();
-  function hanldeRedirection() {
-    router.push('/login');
-  }
+
   return (
     <>
       <div className="min-h-full">

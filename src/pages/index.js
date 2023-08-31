@@ -2,6 +2,8 @@ import { AuthContext } from 'contexts/AuthContext';
 import Logo from '../../public/logo-icon';
 import Dashboard from './dashboard/index';
 import AdminLayout from '@layout/AdminLayout';
+import { useRouter } from 'next/router';
+import Button from '@common/Button';
 
 const navigation = [
   { name: 'Product', href: '#' },
@@ -11,6 +13,7 @@ const navigation = [
 ];
 
 function Home() {
+  const router = useRouter();
   return (
     <div className="bg-white">
       {/* <a href="/login" className="text-sm font-semibold leading-6 text-gray-900">
@@ -32,12 +35,9 @@ function Home() {
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Welcome to LOGO</h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">Logo is your store.Take a walk for our store and fall in love with our exclusive products. Great products are waiting for you.</p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
-                href="/login"
-                className="rounded-md bg-whity-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-whity-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Get started
-              </a>
+              <Button onClick={() => router.push('/login')} color={'grey'}>
+                Get Started
+              </Button>
             </div>
           </div>
         </div>

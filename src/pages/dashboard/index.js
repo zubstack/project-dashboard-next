@@ -3,9 +3,11 @@ import { useContext } from 'react';
 import { ProductsContext } from '@contexts/ProductsContext';
 import AdminLayout from '@layout/AdminLayout';
 import Nav from '@common/Nav';
+import { useRouter } from 'next/router';
 
 export default function Dashboard() {
   const { products } = useContext(ProductsContext);
+  const router = useRouter();
 
   const categoryNames = products?.map((product) => product.category);
   const countOcurrences = (arr) => arr?.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
@@ -19,6 +21,9 @@ export default function Dashboard() {
       },
     ],
   };
+  // if (!session) {
+  //   router.push('/login');
+  // }
 
   return (
     <>

@@ -1,19 +1,18 @@
 import { Menu, Transition } from '@headlessui/react';
 import Logo from '../../public/logo-icon';
-import { Fragment, useContext } from 'react';
+import { Fragment } from 'react';
 import { FaList, FaTags } from 'react-icons/fa';
 import Link from 'next/link';
-import { AuthContext } from '@contexts/AuthContext';
-import { ProductsContext } from '@contexts/ProductsContext';
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 function AdminLayout({ children }) {
   const { data: session } = useSession();
+  const router = useRouter();
   console.log('session', session);
   const userNavigation = [
     { name: 'Account', to: '/account' },
     { name: 'Settings', to: '/settings' },
-    { name: 'Sign out', to: '/' },
   ];
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
@@ -53,6 +52,16 @@ function AdminLayout({ children }) {
                         )}
                       </Menu.Item>
                     ))}
+                    <li
+                      className="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700 cursor-pointer"
+                      onClick={() =>
+                        signOut({ redirect: false }).then(() => {
+                          router.push('/login');
+                        })
+                      }
+                    >
+                      Sign out
+                    </li>
                   </Menu.Items>
                 </Transition>
               </Menu>
