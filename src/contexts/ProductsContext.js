@@ -22,14 +22,12 @@ const ProductsProvider = ({ children }) => {
 
   async function updateProducts() {
     console.log(['UPDATING PRODUCTS']);
-    setLoading(true);
     try {
       const response = await axios.get(endpoints.products.allProducts);
       setProducts(response?.data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
-    setLoading(false);
   }
 
   console.log('loading', loading);

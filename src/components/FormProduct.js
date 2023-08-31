@@ -1,3 +1,4 @@
+import Button from '@common/Button';
 import { ProductsContext } from '@contexts/ProductsContext';
 import { addProduct, updateProduct } from '@services/api/products';
 import { useRouter } from 'next/router';
@@ -161,7 +162,7 @@ function FormProduct({ setOpenModal, product }) {
                 id="brand"
                 autoComplete="brand"
                 rows="3"
-                className="form-textarea mt-1 block w-full mt-1 focus:ring-darkblue-500 focus:border-darkblue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="form-textarea  mt-1 focus:ring-darkblue-500 focus:border-darkblue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
             <div className="col-span-6">
@@ -187,18 +188,15 @@ function FormProduct({ setOpenModal, product }) {
                 id="image"
                 autoComplete="image"
                 rows="3"
-                className="form-textarea mt-1 block w-full mt-1 focus:ring-darkblue-500 focus:border-darkblue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="form-textarea  mt-1 focus:ring-darkblue-500 focus:border-darkblue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
           </div>
         </div>
         <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-          <button
-            type="submit"
-            className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-darkblue-600 hover:bg-darkblue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-darkblue-500"
-          >
+          <Button onClick={handleSubmit} color={'grey'}>
             Save
-          </button>
+          </Button>
         </div>
       </div>
     </form>
