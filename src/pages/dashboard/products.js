@@ -92,12 +92,12 @@ function Products() {
                           <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-/80">${product.price}</span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{product.weight}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <td className="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">
                           <Button color={'grey'} onClick={() => router.push(`../dashboard/edit/${product.id}`)}>
                             Edit
                           </Button>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <td className="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">
                           <Button color={'red'} onClick={() => handleDelete(product.id)}>
                             Delete
                           </Button>

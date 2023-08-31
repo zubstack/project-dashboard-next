@@ -1,5 +1,4 @@
 import Button from '@common/Button';
-import Modal from '@common/Modal';
 import Nav from '@common/Nav';
 import { FormProduct } from '@components/FormProduct';
 import AdminLayout from '@layout/AdminLayout';

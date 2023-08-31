@@ -175,7 +175,7 @@ function FormProduct({ setOpenModal, product }) {
                 id="weight"
                 autoComplete="weight"
                 rows="3"
-                className="form-textarea mt-1 block w-full mt-1 focus:ring-darkblue-500 focus:border-darkblue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="form-textarea mt-1 focus:ring-darkblue-500 focus:border-darkblue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
             <div className="col-span-6">
