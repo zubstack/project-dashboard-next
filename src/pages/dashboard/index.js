@@ -1,14 +1,11 @@
-import { useFetch } from '@hooks/useFetch';
-import { endpoints } from '@services/api';
 import { Chart } from '@common/Chart';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { ProductsContext } from '@contexts/ProductsContext';
-import Header from '@components/Header';
 import AdminLayout from '@layout/AdminLayout';
 import Nav from '@common/Nav';
 
 export default function Dashboard() {
-  const { products, totalProducts, offset, setOffset } = useContext(ProductsContext);
+  const { products } = useContext(ProductsContext);
 
   const categoryNames = products?.map((product) => product.category);
   const countOcurrences = (arr) => arr?.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});

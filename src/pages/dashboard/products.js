@@ -1,21 +1,14 @@
-import { FaEdit, FaPlusCircle, FaTrash } from 'react-icons/fa';
+import { FaPlusCircle } from 'react-icons/fa';
 import Modal from '@common/Modal';
 import { useContext, useEffect, useState } from 'react';
 import { ProductsContext } from '@contexts/ProductsContext';
 import { FormProduct } from '@components/FormProduct';
-import { endpoints } from '@services/api';
-import { useFetch } from '@hooks/useFetch';
 import { deleteProduct } from '@services/api/products';
-import axios from 'axios';
 import AdminLayout from '@layout/AdminLayout';
 import Nav from '@common/Nav';
 import Loading from '@common/Loading';
-import Button from '@common/Button/';
+import Button from '@common/Button';
 import { useRouter } from 'next/router';
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
 
 function Products() {
   const { products, getProducts, loading, updateProducts } = useContext(ProductsContext);

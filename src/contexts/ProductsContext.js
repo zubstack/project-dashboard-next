@@ -1,7 +1,6 @@
-import { useFetch } from '@hooks/useFetch';
 import { endpoints } from '@services/api';
 import axios from 'axios';
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useState } from 'react';
 
 const ProductsContext = createContext();
 
