@@ -9,7 +9,6 @@ import { useRouter } from 'next/router';
 function AdminLayout({ children }) {
   const { data: session } = useSession();
   const router = useRouter();
-  console.log('session', session);
   const userNavigation = [
     { name: 'Account', to: '/account' },
     { name: 'Settings', to: '/settings' },
@@ -17,6 +16,12 @@ function AdminLayout({ children }) {
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
   }
+  const pathArray = router.pathname.split('/');
+  const len = pathArray.length;
+
+  console.log('len', pathArray[len - 1]);
+  const active = 'bg-gray-800 hover:bg-slate-900';
+  const inactive = 'hover:bg-slate-900';
   return (
     <>
       <nav className="fixed top-0 z-50 w-full bg-gray-700  border-gray-200">
@@ -77,8 +82,8 @@ function AdminLayout({ children }) {
       >
         <div className="h-full  pb-4 overflow-y-auto bg-galleta-500">
           <ul className="space-y-2 font-medium">
-            <li className=" hover:bg-slate-900">
-              <Link href={'/dashboard'} className="flex items-center p-2 text-darkblue-500 rounded-lg  dark:hover:bg-galleta-600 group">
+            <li className={pathArray[len - 1] === 'dashboard' ? active : inactive}>
+              <Link href={'/dashboard'} className="flex items-center p-2 text-darkblue-500 rounded-lg group">
                 <div className="flex items-center gap-3 ml-3">
                   {' '}
                   <FaList />
@@ -86,8 +91,8 @@ function AdminLayout({ children }) {
                 </div>
               </Link>
             </li>
-            <li className=" hover:bg-slate-900">
-              <Link href={'/dashboard/products'} className="flex items-center p-2 text-darkblue-500 rounded-lg group">
+            <li className={pathArray[len - 1] === 'products' ? active : inactive}>
+              <Link href={'/dashboard/products'} className="flex items-center p-2  rounded-lg group">
                 <div className="flex items-center gap-3 ml-3">
                   {' '}
                   <FaTags />
