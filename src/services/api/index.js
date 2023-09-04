@@ -18,6 +18,10 @@ const endpoints = {
     deleteProduct: (id) => `${API}/products/${id}`,
   },
 
+  orders: {
+    getOrders: `${API}/orders`,
+  },
+
   categories: {
     getCategoriesList: () => `${API}/categories`,
     // getCategoriesList: `${API}/api/${VERSION}/categories`,

@@ -1,9 +1,10 @@
 import Nav from '@common/Nav';
 import AdminLayout from '@layout/AdminLayout';
-import orders from '../../../data/orders';
+import { endpoints } from '@services/api';
+import { useFetch } from '@hooks/useFetch';
 
 function Orders() {
-  console.log('orders', typeof orders[0].products);
+  const orders = useFetch(endpoints.orders.getOrders).data;
   return (
     <div>
       <Nav page={'Orders'} />
@@ -35,11 +36,11 @@ function Orders() {
                         <td className="px-6 py-4 whitespace-nowrap text-gray-400">{order.id}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-gray-700">{order.date}</td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          {order.products.map((product) => (
-                            <tr className="h-10 gap">
-                              <td className=" w-8 text-center font-bold">{product.quantity} </td>
-                              <td className="max-w-[400px] truncate ">{product.id}</td>
-                            </tr>
+                          {order.products.map((product, index) => (
+                            <p className="h-10 flex gap-2" key={index}>
+                              <p className=" w-8 text-center font-bold">{product.quantity} </p>
+                              <p className="max-w-[400px] truncate ">{product.name}</p>
+                            </p>
                           ))}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-gray-700">{order.user}</td>

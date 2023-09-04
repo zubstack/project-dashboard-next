@@ -19,7 +19,6 @@ function AdminLayout({ children }) {
   const pathArray = router.pathname.split('/');
   const len = pathArray.length;
 
-  console.log('len', pathArray[len - 1]);
   const active = 'bg-gray-800 hover:bg-slate-900';
   const inactive = 'hover:bg-slate-900';
   return (
