@@ -11,12 +11,9 @@ import Button from '@common/Button';
 import { useRouter } from 'next/router';
 
 function Products() {
-  const { products, getProducts, loading, updateProducts } = useContext(ProductsContext);
+  const { products, loading, updateProducts } = useContext(ProductsContext);
   const [openModal, setOpenModal] = useState(false);
   const router = useRouter();
-  useEffect(() => {
-    getProducts();
-  }, []);
 
   function handleDelete(id) {
     deleteProduct(id)

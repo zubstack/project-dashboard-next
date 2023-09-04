@@ -8,11 +8,11 @@ export default function Login() {
   const { data: session } = useSession();
   const router = useRouter();
   if (session) {
-    console.log('session', session);
     router.push('/dashboard');
   }
   return (
-    <>
+    <div className="flex justify-center items-center h-[100vh] gap-10">
+      <h1>Welcome to LOGO, please sign in to continue</h1>
       <button
         onClick={() => {
           setLoading(true);
@@ -31,7 +31,7 @@ export default function Login() {
             }
           });
         }}
-        className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-whity-500"
+        className="group relative w-[300px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-whity-500"
       >
         <span className="flex absolute h-4 w-4 top-0 right-0 -mt-1 -mr-1"></span>
         <span className="absolute left-0 inset-y-0 flex items-center pl-3">
@@ -47,7 +47,7 @@ export default function Login() {
         </span>
         Sign in
       </button>
-    </>
+    </div>
   );
 }
 
