@@ -1,7 +1,7 @@
 import { Menu, Transition } from '@headlessui/react';
 import Logo from '../../public/logo-icon';
 import { Fragment } from 'react';
-import { FaList, FaTags } from 'react-icons/fa';
+import { FaBorderAll, FaFirstOrder, FaList, FaTags } from 'react-icons/fa';
 import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/router';
@@ -99,6 +99,15 @@ function AdminLayout({ children }) {
                   {' '}
                   <FaTags />
                   Products
+                </div>{' '}
+              </Link>
+            </li>
+            <li className={pathArray[len - 1] === 'orders' ? active : inactive}>
+              <Link href={'/dashboard/orders'} className="flex items-center p-2  rounded-lg group">
+                <div className="flex items-center gap-3 ml-3">
+                  {' '}
+                  <FaBorderAll />
+                  Orders
                 </div>{' '}
               </Link>
             </li>
