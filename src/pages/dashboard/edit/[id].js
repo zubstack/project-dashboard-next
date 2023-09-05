@@ -33,7 +33,7 @@ function Edit() {
         {'< Back'}
       </Button>
       <Nav page={'Edit'} />
-      <FormProduct product={product}></FormProduct>;
+      <FormProduct product={product}></FormProduct>
     </>
   );
 }

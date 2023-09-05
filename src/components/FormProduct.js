@@ -194,7 +194,7 @@ function FormProduct({ setOpenModal, product }) {
           </div>
         </div>
         <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-          <Button onClick={handleSubmit} color={'grey'}>
+          <Button width={'120px'} onClick={handleSubmit} color={'grey'}>
             Save
           </Button>
         </div>
