@@ -11,9 +11,14 @@ import Button from '@common/Button';
 import { useRouter } from 'next/router';
 
 function Products() {
-  const { products, loading, updateProducts } = useContext(ProductsContext);
+  const { products, loading, updateProducts, getProducts } = useContext(ProductsContext);
   const [openModal, setOpenModal] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    // Dashboard must to load first always.
+    getProducts();
+  }, []);
 
   function handleDelete(id) {
     deleteProduct(id)
@@ -53,7 +58,7 @@ function Products() {
                         Name
                       </th>
                       <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Category
+                        Brand
                       </th>
                       <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Price
