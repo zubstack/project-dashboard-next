@@ -1,4 +1,4 @@
-import { FaPlusCircle } from 'react-icons/fa';
+import { FaPlusCircle, FaTrash } from 'react-icons/fa';
 import Modal from '@common/Modal';
 import { useContext, useEffect, useState } from 'react';
 import { ProductsContext } from '@contexts/ProductsContext';
@@ -9,10 +9,13 @@ import Nav from '@common/Nav';
 import Loading from '@common/Loading';
 import Button from '@common/Button';
 import { useRouter } from 'next/router';
+import DeleteConfirm from '@components/DeleteConfirm';
 
 function Products() {
   const { products, loading, updateProducts, getProducts } = useContext(ProductsContext);
   const [openModal, setOpenModal] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState('');
   const router = useRouter();
 
   useEffect(() => {
@@ -100,8 +103,14 @@ function Products() {
                           </Button>
                         </td>
                         <td className="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">
-                          <Button color={'red'} onClick={() => handleDelete(product.id)}>
-                            Delete
+                          <Button
+                            color={'red'}
+                            onClick={() => {
+                              setOpenDelete(true);
+                              setItemToDelete(product.id);
+                            }}
+                          >
+                            <FaTrash />
                           </Button>
                         </td>
                       </tr>
@@ -115,6 +124,9 @@ function Products() {
       )}
       <Modal open={openModal} setOpen={setOpenModal}>
         <FormProduct setOpenModal={setOpenModal}></FormProduct>{' '}
+      </Modal>
+      <Modal open={openDelete} setOpen={setOpenDelete}>
+        <DeleteConfirm onDelete={handleDelete} item={itemToDelete} setOpen={setOpenDelete} />
       </Modal>
     </>
   );
