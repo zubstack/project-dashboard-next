@@ -14,7 +14,7 @@ const ProductsProvider = ({ children }) => {
     try {
       const response = await axios.get(endpoints.products.allProducts);
       setProducts(response?.data);
-    } catch {
+    } catch (error) {
       console.log('Error fetching data:', error);
     }
     setLoading(false);

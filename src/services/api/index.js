@@ -1,8 +1,8 @@
 // const API = process.env.NEXT_PUBLIC_API_URL;
 // const VERSION = process.env.NEXT_PUBLIC_API_VERSION;
 
-const API = 'https://ecommerce-api-8vjd.onrender.com/api';
-const LOCAL_API = 'http://localhost:4000/api';
+const API = process.env.NEXT_PUBLIC_API_URL.toString();
+// const LOCAL_API = 'http://localhost:4000/api';
 
 const endpoints = {
   // auth: {
@@ -33,5 +33,6 @@ const endpoints = {
     // addFile: `${API}/api/${VERSION}/files/upload`,
   },
 };
+console.log('API', endpoints.products.getProducts());
 
 export { endpoints };
