@@ -1,7 +1,7 @@
 // const API = process.env.NEXT_PUBLIC_API_URL;
 // const VERSION = process.env.NEXT_PUBLIC_API_VERSION;
 
-const API = process.env.NEXT_PUBLIC_API_URL.toString();
+const API = process.env.NEXT_PUBLIC_API_URL;
 // const LOCAL_API = 'http://localhost:4000/api';
 
 const endpoints = {
