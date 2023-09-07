@@ -1,5 +1,4 @@
 function Button({ children, color, onClick, width }) {
-  console.log('width', width);
   const widthio = width ? `w-[${width}]` : '';
   return (
     <button

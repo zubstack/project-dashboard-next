@@ -10,7 +10,6 @@ export default function Dashboard() {
     // Dashboard must to load first always.
     getProducts();
   }, []);
-  console.log('products', products);
   const categoryNames = products?.map((product) => product.categories);
   const countOcurrences = (arr) => arr?.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
   const chartData = {

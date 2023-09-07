@@ -6,7 +6,6 @@ import { useContext, useRef } from 'react';
 import Swal from 'sweetalert2';
 
 function FormProduct({ setOpenModal, product }) {
-  console.log('product', product);
   const { updateProducts } = useContext(ProductsContext);
   const router = useRouter();
   const formRef = useRef(null);

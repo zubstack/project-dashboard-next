@@ -25,7 +25,6 @@ function Edit() {
       .then()
       .catch((error) => console.log(error));
   }, [router?.isReady]);
-  console.log(product);
 
   return (
     <>

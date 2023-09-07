@@ -33,6 +33,5 @@ const endpoints = {
     // addFile: `${API}/api/${VERSION}/files/upload`,
   },
 };
-console.log('API', endpoints.products.getProducts());
 
 export { endpoints };

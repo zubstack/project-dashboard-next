@@ -5,7 +5,6 @@ import { useSession } from 'next-auth/react';
 
 function Account() {
   const { data: session } = useSession();
-  console.log('session', session);
   return (
     <>
       <Nav page={'Account'} />
