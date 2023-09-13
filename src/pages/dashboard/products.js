@@ -19,7 +19,6 @@ function Products() {
   const router = useRouter();
 
   useEffect(() => {
-    // Dashboard must to load first always.
     getProducts();
   }, []);
 

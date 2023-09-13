@@ -10,29 +10,31 @@ export default function Login() {
   if (session) {
     router.push('/dashboard');
   }
+
+  function onLogin() {
+    setLoading(true);
+    signIn('google');
+    // .then((result) => {
+    // if (session) {
+    //   router.push('/dashboard');
+    //   Swal.fire({
+    //     toast: true,
+    //     title: 'Welcome',
+    //     icon: 'success',
+    //     position: 'top-end',
+    //     showConfirmButton: false,
+    //     timer: 1500,
+    //   });
+    // }
+    //   console.log('result', result);
+    // });
+  }
+
   return (
     <div className="flex justify-center items-center h-[100vh] gap-10">
       <h1>Welcome to LOGO, please sign in to continue</h1>
       <button
-        onClick={() => {
-          setLoading(true);
-
-          signIn('google');
-          // .then((result) => {
-          // if (session) {
-          //   router.push('/dashboard');
-          //   Swal.fire({
-          //     toast: true,
-          //     title: 'Welcome',
-          //     icon: 'success',
-          //     position: 'top-end',
-          //     showConfirmButton: false,
-          //     timer: 1500,
-          //   });
-          // }
-          //   console.log('result', result);
-          // });
-        }}
+        onClick={onLogin}
         className="group relative w-[300px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-whity-500"
       >
         <span className="absolute left-0 inset-y-0 flex items-center pl-3">

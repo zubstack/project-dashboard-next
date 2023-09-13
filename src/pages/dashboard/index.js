@@ -7,7 +7,6 @@ import Nav from '@common/Nav';
 export default function Dashboard() {
   const { products, getProducts } = useContext(ProductsContext);
   useEffect(() => {
-    // Dashboard must to load first always.
     getProducts();
   }, []);
   const categoryNames = products?.map((product) => product.categories);
