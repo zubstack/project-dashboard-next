@@ -9,13 +9,16 @@ export default function Dashboard() {
   useEffect(() => {
     getProducts();
   }, []);
-  const categoryNames = products?.map((product) => product.categories);
+
+  console.log('products', products);
+
+  const brandNames = products?.map((product) => product.item.brand);
   const countOcurrences = (arr) => arr?.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
   const chartData = {
     datasets: [
       {
         label: 'Categories',
-        data: countOcurrences(categoryNames),
+        data: countOcurrences(brandNames),
         borderWidth: 2,
         backgroundColor: ['#3F2305', '#DFD7BF', '#F2EAD3', '#606C9D', '#F1C376', '#A8A196'],
       },
