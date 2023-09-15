@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { useContext, useRef } from 'react';
 import Swal from 'sweetalert2';
 
-function FormProduct({ setOpenModal, product }) {
+function FormProduct({ product }) {
   const { updateProducts } = useContext(ProductsContext);
   const router = useRouter();
   const formRef = useRef(null);
@@ -34,7 +34,7 @@ function FormProduct({ setOpenModal, product }) {
 
     return pass;
   }
-
+  console.log('product', product);
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(formRef.current);
@@ -45,9 +45,9 @@ function FormProduct({ setOpenModal, product }) {
         brand: formData.get('brand'),
         model: formData.get('model'),
         description: formData.get('description'),
-        price: formData.get('price'),
+        price: parseInt(formData.get('price')),
         availability: formData.get('availability'),
-        rating: formData.get('rating'),
+        rating: parseInt(formData.get('rating')),
         image_url: formData.get('image_url'),
       },
       specifications: {
@@ -67,7 +67,7 @@ function FormProduct({ setOpenModal, product }) {
     if (validation) {
       if (product) {
         updateProduct(data, product.id)
-          .then((response) => {
+          .then(() => {
             updateProducts();
             router.push('/dashboard/products');
             Swal.fire({
@@ -92,10 +92,12 @@ function FormProduct({ setOpenModal, product }) {
           });
         return;
       }
+      console.log('data', data);
       addProduct(data)
         .then(() => {
           updateProducts();
-          setOpenModal(false);
+          router.push('/dashboard/products');
+
           Swal.fire({
             toast: true,
             title: 'Successfuly added',
@@ -296,20 +298,6 @@ function FormProduct({ setOpenModal, product }) {
                 name="layout"
                 id="layout"
                 autoComplete="layout"
-                rows="3"
-                className="form-textarea  mt-1 focus:ring-darkblue-500 focus:border-darkblue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-              />
-            </div>
-
-            <div className="col-span-6">
-              <label htmlFor="connectivity" className="block text-sm font-medium text-gray-700">
-                Connectivity
-              </label>
-              <input
-                defaultValue={product?.specifications.connectivity}
-                name="connectivity"
-                id="connectivity"
-                autoComplete="connectivity"
                 rows="3"
                 className="form-textarea  mt-1 focus:ring-darkblue-500 focus:border-darkblue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
