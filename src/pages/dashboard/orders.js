@@ -7,7 +7,7 @@ function Orders() {
   const orders = useFetch(endpoints.orders.getOrders).data;
   return (
     <div>
-      <Nav page={'Orders'} />
+      <Nav title={'Orders'} />
       <div className="bg-white mt-4 p-4">
         <div className="flex flex-col">
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

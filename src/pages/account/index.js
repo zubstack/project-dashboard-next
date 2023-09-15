@@ -7,7 +7,7 @@ function Account() {
   const { data: session } = useSession();
   return (
     <>
-      <Nav page={'Account'} />
+      <Nav title={'Account'} />
 
       <div className="bg-white mt-10 py-3 px-20">
         <h1>Email:</h1>

@@ -27,7 +27,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <Nav page={'Dashboard'} />
+      <Nav title={'Dashboard'} />
 
       <Chart className="mb-8 mt-2" chartData={chartData} />
     </>

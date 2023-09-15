@@ -37,11 +37,11 @@ function Products() {
 
   return (
     <>
-      <Nav page={'Products'} />
+      <Nav title={'Products'} />
 
       <div className="lg:flex sm:justify-end p-4 ">
         <div className="mt-5 flex lg:mt-0 lg:ml-4">
-          <Button color={'grey'} onClick={() => setOpenModal(true)}>
+          <Button color={'grey'} onClick={() => router.push(`../dashboard/add`)}>
             <FaPlusCircle className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
             Add Product
           </Button>
@@ -123,9 +123,7 @@ function Products() {
           </div>
         </div>
       )}
-      <Modal open={openModal} setOpen={setOpenModal}>
-        <FormProduct setOpenModal={setOpenModal}></FormProduct>{' '}
-      </Modal>
+
       <Modal open={openDelete} setOpen={setOpenDelete}>
         <DeleteConfirm onDelete={handleDelete} item={itemToDelete} setOpen={setOpenDelete} />
       </Modal>

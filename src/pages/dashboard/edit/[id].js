@@ -15,7 +15,7 @@ function Edit() {
   useEffect(() => {
     const { id } = router.query;
 
-    if (!router?.isReady) return;
+    // if (!router?.isReady) return;
 
     async function getProduct() {
       const response = await axios.get(endpoints.products.getProduct(id));
@@ -25,13 +25,16 @@ function Edit() {
       .then()
       .catch((error) => console.log(error));
   }, [router?.isReady]);
+  console.log('product', Object.keys(product).length === 0);
+
+  if (Object.keys(product).length === 0) return;
 
   return (
     <>
       <Button color={'grey'} onClick={router.back}>
         {'< Back'}
       </Button>
-      <Nav page={'Edit'} />
+      <Nav title={'Edit'} />
       <FormProduct product={product}></FormProduct>
     </>
   );
