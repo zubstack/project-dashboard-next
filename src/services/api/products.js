@@ -30,9 +30,11 @@ async function updateProduct(data, id) {
       'Content-Type': 'application/json',
     },
   };
-  const response = await axios.put(endpoints.products.updateProduct(id), data, options);
 
-  return response.data;
+  // const response = await axios.put(endpoints.products.updateProduct(id), data, options);
+
+  // return response.data;
+  return await axios.put(endpoints.products.updateProduct(id), data, options);
 }
 
 export { addProduct, deleteProduct, updateProduct };

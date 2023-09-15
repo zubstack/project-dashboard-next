@@ -40,19 +40,34 @@ function FormProduct({ setOpenModal, product }) {
     const formData = new FormData(formRef.current);
 
     const data = {
-      name: formData.get('name'),
-      price: parseInt(formData.get('price')),
-      brand: formData.get('brand'),
-      categories: formData.get('category'),
-      images: [formData.get('image')],
-      weight: formData.get('weight'),
+      item: {
+        name: formData.get('name'),
+        brand: formData.get('brand'),
+        model: formData.get('model'),
+        description: formData.get('description'),
+        price: formData.get('price'),
+        availability: formData.get('availability'),
+        rating: formData.get('rating'),
+        image_url: formData.get('image_url'),
+      },
+      specifications: {
+        keyboard_type: formData.get('keyboard_type'),
+        switch_type: formData.get('switch_type'),
+        backlighting: formData.get('backlighting'),
+        connectivity: formData.get('connectivity'),
+        layout: formData.get('layout'),
+        dimensions: formData.get('dimensions'),
+        weight: formData.get('weight'),
+        additional_features: formData.get('additional_features'),
+        shipping_information: formData.get('shipping_information'),
+      },
     };
 
     const validation = checkData(data);
     if (validation) {
       if (product) {
         updateProduct(data, product.id)
-          .then(() => {
+          .then((response) => {
             updateProducts();
             router.push('/dashboard/products');
             Swal.fire({
@@ -103,8 +118,6 @@ function FormProduct({ setOpenModal, product }) {
         });
     }
   };
-
-  console.log('product', product);
 
   return (
     <form ref={formRef} onSubmit={handleSubmit}>
@@ -210,9 +223,9 @@ function FormProduct({ setOpenModal, product }) {
               </label>
               <input
                 defaultValue={product?.item.image_url}
-                name="image"
-                id="image"
-                autoComplete="image"
+                name="image_url"
+                id="image_url"
+                autoComplete="image_url"
                 rows="3"
                 className="form-textarea  mt-1 focus:ring-darkblue-500 focus:border-darkblue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
@@ -307,7 +320,7 @@ function FormProduct({ setOpenModal, product }) {
                 Dimensions
               </label>
               <input
-                defaultValue={product?.specifications.connectitvty}
+                defaultValue={product?.specifications.dimensions}
                 name="dimensions"
                 id="dimensions"
                 autoComplete="dimensions"
@@ -321,7 +334,7 @@ function FormProduct({ setOpenModal, product }) {
                 Weight
               </label>
               <input
-                defaultValue={product?.specifications.weights !== undefined ? product.weight_url : ''}
+                defaultValue={product?.specifications.weight}
                 name="weight"
                 id="weight"
                 autoComplete="weight"
