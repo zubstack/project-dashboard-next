@@ -1,18 +1,28 @@
 import { Chart } from '@common/Chart';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ProductsContext } from '@contexts/ProductsContext';
 import AdminLayout from '@layout/AdminLayout';
 import Nav from '@common/Nav';
+import axios from 'axios';
+import { endpoints } from '@services/api';
 
 export default function Dashboard() {
-  const { products, getProducts } = useContext(ProductsContext);
+  const [products, setProducts] = useState([]);
   useEffect(() => {
-    getProducts();
+    async function fetchProducts() {
+      // setLoading(true);
+      try {
+        const response = await axios.get(endpoints.products.allProducts);
+        setProducts(response.data);
+      } catch (error) {
+        console.log('Error fetching data:', error);
+      }
+      // setLoading(false);
+    }
+    fetchProducts();
   }, []);
 
-  console.log('products', products);
-
-  const brandNames = products?.map((product) => product.item.brand);
+  const brandNames = products?.map((product) => product.item?.brand);
   const countOcurrences = (arr) => arr?.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
   const chartData = {
     datasets: [
